@@ -1,8 +1,15 @@
 /* Choosing 256px since it equals 16*16, which is the desired grid layout */
 
-.grid-container {
+#grid-container {
     display: flex;
     width: 256px;
     height: 256px;
+    border: 1px solid black;
+}
+
+.grid-item {
+    display: flex;
+    width: 16px;
+    height: 16px;
     border: 1px solid black;
 }
