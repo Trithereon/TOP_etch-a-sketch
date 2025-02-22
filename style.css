@@ -1,4 +1,4 @@
-/* Choosing 256px since it equals 16*16, which is the desired grid layout */
+/* Choosing 256px since it equals 16px*16px, which is the desired grid layout */
 
 #grid-container {
     display: flex;
