@@ -5,7 +5,7 @@ gridCreate(numSquares);
 
 function gridCreate(numSquares){
 
-    const gridContainer = document.getElementById("grid-container");
+    let gridContainer = document.getElementById("grid-container");
     
     //once grid container is removed, build a new one.
     if (gridContainer === null){
@@ -21,13 +21,27 @@ function gridCreate(numSquares){
     }
 
     //fill grid container with grid items by appending each one by one. Surely this can be optimized, since appendChild() triggers a reflow and repaint of the DOM.
-    for (let i = 1; i <= numSquares*numSquares; i++){
+    /*for (let i = 1; i <= numSquares*numSquares; i++){
         const newGridItem = document.createElement("div");
         newGridItem.classList.add("grid-item");
         newGridItem.style.width = 640 / numSquares - 2 + "px"; //subtracting 2 because grid-item border is 1px on each side.
         newGridItem.style.height = 640 / numSquares - 2 + "px";
         gridContainer.appendChild(newGridItem);
+    }*/
+
+    //the following is an attempt to optimize the appendChild() method, for fewer reflows and repaints.
+    const fragment = document.createDocumentFragment();
+    for (let i = 1; i <= numSquares*numSquares; i++){
+        const newGridItem = document.createElement("div");
+        newGridItem.classList.add("grid-item");
+        newGridItem.style.width = 640 / numSquares - 2 + "px"; //subtracting 2 because grid-item border is 1px on each side.
+        newGridItem.style.height = 640 / numSquares - 2 + "px";
+        fragment.appendChild(newGridItem);
     }
+
+    document.getElementById('grid-container').appendChild(fragment);
+
+    //note: at numSquares=300, the fragment method is 1 second faster, or 3s instead of 4s.
 
     const gridItems = document.getElementsByClassName("grid-item");
     
@@ -36,7 +50,7 @@ function gridCreate(numSquares){
         gridItems[i].addEventListener("mouseover", function() {
                 gridItems[i].style.backgroundColor = 'black';
         });
-}
+    }
 
 }
 
