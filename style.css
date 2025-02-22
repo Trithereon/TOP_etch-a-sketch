@@ -13,4 +13,6 @@
     width: 38px;
     height: 38px;
     border: 1px solid black;
+    opacity: 0;
+    background-color: black;
 }
