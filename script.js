@@ -10,6 +10,9 @@ function gridCreate(numSquares){
     if (gridContainer === null){
         const newGridContainer = document.createElement("div");
         newGridContainer.setAttribute('id', 'grid-container');
+            //no need to modify grid-container styles, as per instructions.
+            //newGridContainer.style.width = numSquares * numSquares + "px";
+            //newGridContainer.style.height = numSquares * numSquares + "px";
         document.body.appendChild(newGridContainer);
         gridContainer = document.getElementById("grid-container");
     }
@@ -18,6 +21,8 @@ function gridCreate(numSquares){
         for (let i = 1; i <= numSquares; i++){
             const newGridItem = document.createElement("div");
             newGridItem.classList.add("grid-item");
+            newGridItem.style.width = 640 / numSquares - 2 + "px";
+            newGridItem.style.height = 640 / numSquares - 2 + "px";
             gridContainer.appendChild(newGridItem);
         }
     }
@@ -27,8 +32,7 @@ function gridCreate(numSquares){
         gridItems[i].addEventListener("mouseover", function() {
                 gridItems[i].style.backgroundColor = 'black';
         });
-    }
-    
+}
 
 }
 

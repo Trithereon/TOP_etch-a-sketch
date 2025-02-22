@@ -2,15 +2,15 @@
 
 #grid-container {
     display: flex;
-    width: 256px;
-    height: 256px;
+    width: 640px;
+    height: 640px;
     border: 1px solid black;
     flex-wrap: wrap;
 }
 
 .grid-item {
     display: flex;
-    width: 14px;
-    height: 14px;
+    width: 38px;
+    height: 38px;
     border: 1px solid black;
 }
