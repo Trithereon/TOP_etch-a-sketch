@@ -56,8 +56,13 @@ function gridCreate(numSquares){
 
     //clicking the button prompts the user for input on the new grid resolution (numSquares value)
 numSquares = gridCreateButton.addEventListener("click", function(){
-    numSquares = prompt("How many boxes per side do you want for the next grid? (1-100)");
-    let grid = document.getElementById("grid-container");
+    const grid = document.getElementById("grid-container");
     grid.remove();
+    numSquares = prompt("How many boxes per side do you want for the next grid? (1-100)");
+    
+    while (numSquares < 1 || numSquares > 100 || isNaN(numSquares)){
+        numSquares = prompt("INVALID INPUT! Please choose an integer between 1-100.");
+    }
+
     gridCreate(numSquares);
 });
